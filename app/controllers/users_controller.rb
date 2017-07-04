@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, except: [:show, :new, :create]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 10)
+    @users = User.paginate page: params[:page], per_page: Settings.user.per_page
   end
 
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts.paginate(page: params[:page], per_page: 10)
+    @user = User.find_by id: params[:id]
+    @posts = @user.posts.paginate page: params[:page],
+      per_page: Settings.user.per_page
   end
 
   def new
@@ -17,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new user_params
 
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = t ".welcome"
       redirect_to @user
     else
       render :new
@@ -29,14 +30,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by id: params[:id]
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by id: params[:id]
 
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+    if @user.update_attributes user_params
+      flash[:success] = t ".profile_updated"
       redirect_to @user
     else
       render :edit
@@ -45,30 +46,22 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = t ".delete_user"
     redirect_to users_url
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
+    params.require(:user).permit :name, :email, :password, :password_confirmation
   end
 
   def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    @user = User.find_by id: params[:id]
+    redirect_to root_url unless current_user? @user
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.is_admin?
+    redirect_to root_url unless current_user.is_admin?
   end
 end

@@ -1,23 +1,89 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  static_pages:
+    home:
+      new_feed: "New Feed"
+      title: "Welcome to the Website"
+      link_help: "Link admin"
+      content: " This is the  %{link1} can help you."
+      sign_up: "Sign up now!"
+    help:
+      title: "References"
+      content: "  Get help on the Ruby on Rails Tutorial at the %{link1}
+       To get help on this sample app, see the %{link2} book</a>."
+      good_book: "Ruby on Rails Tutorial"
+      book_help: "Rails Tutorial help section"
+
+  layouts:
+    application:
+      title: "Welcome to you the Website"
+    header:
+      title: "Web Public"
+      home: "Home"
+      help: "References"
+      users: "Users"
+      account: "Account"
+      profile: "Profile"
+      settings: "Settings"
+      log_out: "Log out"
+      log_in: "Log in"
+  posts:
+    post:
+      delete: "delete"
+      you_sure: "You sure?"
+      posted: "Posted"
+      ago: "ago."
+    create:
+      new_post: "Post created!"
+    picture_size:
+      limit_picture: "should be less than 5MB"
+      file_size: "Maximum file size is 5MB. Please choose a smaller file."
+    destroy:
+      delete_post: "Post deleted"
+
+  sessions:
+    new:
+      title: "Log in"
+      log_in: "Log in"
+      remember_me: "Remember me on this computer"
+      new_user: "New user?"
+      sign_up: "Sign up now!"
+    create:
+      warning: "Invalid email/password combination"
+    destroy:
+      logout_user: "Logout user"
+
+  shared:
+    error_messages:
+      content: "The form contains"
+      error: "Error"
+    post_form:
+      new_post: "Compose new post..."
+      post: "Post"
+    user_info:
+      my_profile: "view my profile"
+      post: "post"
+
+  users:
+    user:
+      delete: "delete"
+      you_sure: "You sure?"
+    edit:
+      title: "Edit user"
+      update_profile: "Update your profile"
+      save_change: "Save changes"
+      password_confirmation: "Password confirmation"
+      change: "change"
+    index:
+      title: "All users"
+      pls_login: "Please log in."
+    new:
+      title: "Sign up"
+      password_confirmation: "Password confirmation"
+      create_account: "Create my account"
+    show:
+      post: "Posts"
+    create:
+      welcome: "Welcome to the Website!"
+      profile_update: "Profile updated"
+    destroy:
+      delete_user: "User deleted"
