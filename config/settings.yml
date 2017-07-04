@@ -1,0 +1,14 @@
+user:
+  size_name: 50
+  size_email: 255
+  size_min: 6
+  per_page: 10
+  size_gra: 80
+picture:
+  size: 5
+  height: 400
+  width: 400
+post:
+  size_gra: 50
+  max_str: 140
+  size_limit: 10

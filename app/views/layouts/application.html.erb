@@ -3,10 +3,10 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= render "layouts/defaul" %>
-    <%= render 'layouts/shim' %>
+    <%= render "layouts/shim" %>
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%= render "layouts/header" %>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
