@@ -4,6 +4,9 @@
 $gray-medium-light: #eaeaea;
 $light-black: #777;
 $white: #fff;
+$gray: #bbb;
+$blue: #2e227a;
+$red: #ff0000;
 
 body {
   padding-top: 60px;
@@ -113,9 +116,48 @@ aside {
   margin-top: 15px;
 }
 
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: $gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
 input, textarea, select, .uneditable-input {
   @include box_sizing;
-  border: 1px solid #bbb;
+  border: 1px solid $gray;
   margin-bottom: 15px;
   width: 100%;
 }
@@ -125,9 +167,9 @@ input {
 }
 
 #error_explanation {
-  color: red;
+  color: $red;
   ul {
-    color: red;
+    color: $red;
     margin: 0 0 30px 0;
   }
 }
