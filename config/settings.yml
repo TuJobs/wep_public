@@ -11,3 +11,4 @@ picture:
 post:
   size_gra: 50
   max_str: 140
+  size_limit: 10
